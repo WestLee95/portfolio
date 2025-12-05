@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Anton&family=Pacifico&family=Praise&family=Protest+Guerrilla&display=swap");
+@import "tailwindcss";
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.hero-img {
+  background-image: url("/hero.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  font-family: "Praise", sans-serif;
+  -webkit-text-stroke: 2px orange;
+}
+
+h2 {
+  font-family: "Protest Guerrilla", sans-serif;
+}
