@@ -36,15 +36,13 @@ export default function Hero() {
         className="relative h-screen w-full flex justify-center items-center overflow-hidden"
       >
         <div
-          className="hero-img absolute inset-0 bg-cover bg-center opacity-20"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=1600&fit=crop&crop=face)',",
-            filter: "grayscale(100%) contrast(1.2)",
-          }}
+          className="bg-black/90 absolute inset-0 bg-cover bg-center opacity-100"
+          
         />
 
-        <div className="relative z-10 w-full px-4 md:px-0">
+     
+{/*https://youtube.com/shorts/NBj4XzO3R_Q?si=_-39in8g6qk2jldL*/}
+        <div className="relative w-full px-4 md:px-0 z-30">
           <h1
             className="hero-title-1 fade-in text-6xl sm:text-8xl md:text-[150px] lg:text-[200px] text-center leading-none"
             style={{
@@ -72,27 +70,27 @@ export default function Hero() {
         </div>
 
         <h2
-          className="fade-in hidden lg:block text-4xl xl:text-5xl absolute z-10 top-32 xl:top-40 right-20 xl:right-40 tracking-widest"
-          style={{
-            letterSpacing: "0.15em",
+          className="code fade-in hidden lg:block text-4xl xl:text-5xl absolute z-10 top-32 xl:top-40 right-20 xl:right-40 tracking-widest"
+          style={{            
             opacity: 0,
             transform: "translateY(20px)",
             transition: "all 0.8s ease-out 0.4s",
           }}
         >
-          WEB <br /> DESIGNER
+         
         </h2>
         <h2
-          className="fade-in hidden lg:block text-4xl xl:text-5xl absolute z-10 top-32 xl:top-40 left-20 xl:left-40 tracking-widest"
+          className="voice fade-in hidden lg:block text-4xl xl:text-5xl absolute z-10 top-32 xl:top-40 left-20 xl:left-40 tracking-widest"
           style={{
-            letterSpacing: "0.15em",
             opacity: 0,
             transform: "translateY(20px)",
             transition: "all 0.8s ease-out 0.4s",
           }}
         >
-          VOICE <br /> ARTIST
+          
         </h2>
+
+        
 
         {/* Mobile Labels */}
         <div className="lg:hidden absolute bottom-20 w-full flex justify-around px-8">

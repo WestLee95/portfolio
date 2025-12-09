@@ -27,3 +27,34 @@ h1 {
 h2 {
   font-family: "Protest Guerrilla", sans-serif;
 }
+
+.numbers {
+  font-size: 12px;
+}
+.nav-text {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.mask-oval {
+  -webkit-mask: radial-gradient(circle, transparent 0 20%, black 72%);
+  mask: radial-gradient(circle, transparent 0 20%, black 72%);
+}
+
+.voice {
+  background-image: url("/V4.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
+.code {
+  background-image: url("/V5.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 300px;
+}
