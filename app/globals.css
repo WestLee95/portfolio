@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Anton&family=Pacifico&family=Praise&family=Protest+Guerrilla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Praise&family=Protest+Guerrilla&family=Rubik+Glitch&display=swap");
 @import "tailwindcss";
 
 @keyframes fadeInUp {
@@ -19,24 +19,41 @@
   background-repeat: no-repeat;
 }
 
-h1 {
-  font-family: "Praise", sans-serif;
-  -webkit-text-stroke: 2px orange;
+.hero-title-1 {
+  text-shadow: "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000";
+  opacity: 0;
+  transform: "translateY(20px)";
+  transition: "all 0.8s ease-out";
+  font-family: "Times New Roman", Times, serif;
 }
 
-h2 {
-  font-family: "Protest Guerrilla", sans-serif;
+h1 {
+  font-family: "Rubik Glitch", system-ui;
+  -webkit-text-stroke: 1px green;
+}
+.hero-title-2 {
+  font-family: "Monoton", sans-serif;
+  -webkit-text-stroke: 2px greenyellow;
+  opacity: 0;
+  transform: "translateY(20px)";
+  transition: "all 0.8s ease-out 0.4s";
 }
 
 .numbers {
   font-size: 12px;
+  color: white;
+  border-color: green;
 }
 .nav-text {
   font-size: 14px;
+  color: white;
   font-weight: 500;
   text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
 }
-
+nav {
+  border-color: greenyellow;
+}
 .mask-oval {
   -webkit-mask: radial-gradient(circle, transparent 0 20%, black 72%);
   mask: radial-gradient(circle, transparent 0 20%, black 72%);

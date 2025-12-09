@@ -11,14 +11,16 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <nav className="absolute top-0 left-0 w-full z-50 bg-transparent border-b-2 border-amber-900/10">
+      <nav className="absolute top-0 left-0 w-full z-50 bg-transparent border-b-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
-          <a className="text-2xl md:text-3xl font-bold tracking-tight text-amber-900" href='#'>EW</a>
+          <a className="text-2xl md:text-2xl font-bold tracking-tight text-white" href='#'>
+            MWAMBACHA
+          </a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex flex-col gap-[2px]">
+          <div className="hidden md:flex flex-col gap-0.5">
             <div className='flex gap-px items-center'>
-              <span className="numbers flex items-center justify-center w-4  h-4 rounded-full border border-black font-bold">
+              <span className="numbers flex items-center justify-center w-4  h-4 text-white rounded-full border font-bold">
                 1
               </span>
               <a href="#about" className="nav-text text-amber-900 hover:text-amber-700 transition-colors">About</a>
