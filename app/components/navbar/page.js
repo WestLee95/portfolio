@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <nav className="absolute top-0 left-0 w-full z-50 bg-transparent border-b-2">
+      <nav className="absolute top-0 left-0 w-full z-50 bg-black/70 border-b-2">
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
           <a className="text-2xl md:text-2xl font-bold tracking-tight text-white" href='#'>
             MWAMBACHA
@@ -79,7 +79,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-amber-900 p-2"
+            className="md:hidden text-white p-2"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}

@@ -85,10 +85,40 @@ nav {
 body {
   cursor: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
-    <circle cx='16' cy='16' r='10' stroke='white' stroke-width='2' fill='none'/>\
-    <circle cx='16' cy='16' r='4' fill='white'/>\
+    <circle cx='16' cy='16' r='14' stroke='aqua' stroke-width='3' fill='none'/>\
+    <circle cx='16' cy='16' r='3' fill='white'/>\
   </svg>") 16 16, auto;
 }
+a, a:hover, a:active, a:focus{
+  cursor: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
+    <circle cx='16' cy='16' r='14' stroke='aqua' stroke-width='3' fill='none'/>\
+    <circle cx='16' cy='16' r='3' fill='white'/>\
+  </svg>") 16 16, auto;
+}
+
+
+@keyframes scroll-horizontal {
+          from {
+            transform: translateX(0%);
+          }
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        .about-scroll-wrapper {
+          animation: scroll-horizontal linear;
+          animation-timeline: scroll();
+          animation-range: entry 0% exit 100%;
+        }
+
+        @supports not (animation-timeline: scroll()) {
+          /* Fallback for browsers that don't support scroll-driven animations */
+          .about-scroll-wrapper {
+            animation: none;
+          }
+        }
 
 
 
