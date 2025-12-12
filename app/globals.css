@@ -42,7 +42,7 @@ h1 {
   transition: "all 0.8s ease-out 0.4s";
 }
 .mobile-hero {
-  font-family: "Rubik Glitch", system-ui;
+  font-family: "Times New Roman", Times, serif;
   -webkit-text-stroke: 2px greenyellow;
   letter-spacing: "0.15em";
   opacity: 0;
