@@ -113,30 +113,29 @@ export default function Hero() {
         </div>
 
         <h2
-          className="hero-title-2 fade-in hidden lg:block text-4xl xl:text-[150px]  absolute z-10 top-[45vh] xl:top-[55vh] right-20 xl:right-40 tracking-widest"
-
-        >
-          CODE
-        </h2>
-        <h2
-          className="hero-title-2 fade-in hidden lg:block text-4xl xl:text-[150px] absolute z-10 top-[60vh] xl:top-40 left-20 xl:left-40 tracking-widest"
+          className="hero-title-2 fade-in hidden lg:block text-4xl xl:text-[150px] absolute z-10 top-[40vh] xl:top-[22vh] left-20 xl:left-40 tracking-widest"
 
         >
           VOICE
         </h2>
 
+        <h2
+          className="hero-title-2 fade-in hidden lg:block text-4xl xl:text-[150px]  absolute z-10 top-[30vh] xl:top-[52vh] right-20 xl:right-40 tracking-widest"
 
+        >
+          CODE
+        </h2>
 
         {/* Mobile Labels */}
-        <div className="lg:hidden absolute bottom-55 w-full flex flex-col justify-center items-center gap-[100px] px-8">
+        <div className="lg:hidden absolute w-full h-full flex flex-col justify-center items-center gap-[200px] px-8">
           <h2
-            className="mobile-hero fade-in text-5xl sm:text-3xl font-bold tracking-widest"
+            className="mobile-hero fade-in text-7xl sm:text-3xl font-bold tracking-widest"
           >
             VOICE
           </h2>
 
           <h2
-            className="mobile-hero fade-in text-5xl sm:text-3xl font-bold tracking-widest"
+            className="mobile-hero fade-in text-7xl sm:text-3xl font-bold tracking-widest"
           >
             CODE
           </h2>
