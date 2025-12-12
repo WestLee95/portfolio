@@ -19,6 +19,9 @@
   background-repeat: no-repeat;
 }
 
+
+
+
 .hero-title-1 {
   text-shadow: "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000";
   opacity: 0;
@@ -34,6 +37,14 @@ h1 {
 .hero-title-2 {
   font-family: "Monoton", sans-serif;
   -webkit-text-stroke: 2px greenyellow;
+  opacity: 0;
+  transform: "translateY(20px)";
+  transition: "all 0.8s ease-out 0.4s";
+}
+.mobile-hero {
+  font-family: "Protest Guerilla", sans-serif;
+  -webkit-text-stroke: 2px greenyellow;
+  letter-spacing: "0.15em";
   opacity: 0;
   transform: "translateY(20px)";
   transition: "all 0.8s ease-out 0.4s";
@@ -54,10 +65,6 @@ h1 {
 nav {
   border-color: greenyellow;
 }
-.mask-oval {
-  -webkit-mask: radial-gradient(circle, transparent 0 20%, black 72%);
-  mask: radial-gradient(circle, transparent 0 20%, black 72%);
-}
 
 .voice {
   background-image: url("/V4.png");
@@ -75,3 +82,13 @@ nav {
   width: 300px;
   height: 300px;
 }
+body {
+  cursor: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
+    <circle cx='16' cy='16' r='10' stroke='white' stroke-width='2' fill='none'/>\
+    <circle cx='16' cy='16' r='4' fill='white'/>\
+  </svg>") 16 16, auto;
+}
+
+
+
