@@ -34,6 +34,9 @@ h1 {
   font-family: "Rubik Glitch", system-ui;
   -webkit-text-stroke: 1px green;
 }
+h3{
+  font-family: "Monument Extended", sans-serif;
+}
 .hero-title-2 {
   font-family: "Monoton", sans-serif;
   -webkit-text-stroke: 2px greenyellow;
@@ -82,6 +85,64 @@ nav {
   width: 300px;
   height: 300px;
 }
+
+/* About Section */
+#horizontal .content {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+#horizontal {
+  display: flex;
+
+}
+.about {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #223d36;
+  overflow: hidden;
+}
+
+.content {
+  font-family: "Monument Extended", sans-serif;
+  font-size: 3rem;
+}
+.content:nth-child(1) {
+  background: #95ae03;
+  color: black;
+}
+.content:nth-child(2) {
+  background: #ae4d03;
+  color: white;
+}
+.content:nth-child(3) {
+  background: #95ae03;
+  color: white;
+}
+.content:nth-child(4) {
+  background: #ae4d03;
+  color: white;
+}
+.content:nth-child(5) {
+  background: #95ae03;
+  color: white;
+}
+.content:nth-child(6) {
+  background: #ae4d03;
+  color: white;
+}
+.content:nth-child(7) {
+  background: #ae4d03;
+  color: white;
+}
+
+
+
+
+
 body {
   cursor: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
@@ -97,28 +158,6 @@ a, a:hover, a:active, a:focus{
   </svg>") 16 16, auto;
 }
 
-
-@keyframes scroll-horizontal {
-          from {
-            transform: translateX(0%);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        .about-scroll-wrapper {
-          animation: scroll-horizontal linear;
-          animation-timeline: scroll();
-          animation-range: entry 0% exit 100%;
-        }
-
-        @supports not (animation-timeline: scroll()) {
-          /* Fallback for browsers that don't support scroll-driven animations */
-          .about-scroll-wrapper {
-            animation: none;
-          }
-        }
 
 
 
