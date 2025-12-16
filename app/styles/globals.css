@@ -28,6 +28,7 @@
   font-family: "Times New Roman", Times, serif;
 }
 
+
 h1 {
   font-family: "Rubik Glitch", system-ui;
 }
@@ -36,7 +37,6 @@ h3{
 }
 h6{
   font-family: "Italianno", sans-serif;
-  font-size: 5rem;
 
 }
 .hero-title-1 {
@@ -48,9 +48,9 @@ h6{
   transition: "all 0.8s ease-out 0.4s";
 }
 .mobile-hero {
-  font-family: "Times New Roman", Times, serif;
-  -webkit-text-stroke: 2px greenyellow;
+  font-family: "Rammetto One", sans-serif;
   letter-spacing: "0.15em";
+  
   opacity: 0;
   transform: "translateY(20px)";
   transition: "all 0.8s ease-out 0.4s";
