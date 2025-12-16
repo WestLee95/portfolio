@@ -1,5 +1,4 @@
 'use client'
-import "../../globals.css";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect } from "react";
@@ -16,7 +15,7 @@ export default function About() {
     scrollTrigger: { 
       trigger: '#horizontal',
       pin: true,
-      scrub: 1,
+      scrub: 6,
        }
   });
   }, []);
@@ -30,9 +29,9 @@ export default function About() {
         id="horizontal"
         className="relative about h-screen bg-amber-100 text-black"
       >
-        <div className="content">
-          <div className="absolute bg-white h-[200px] w-[200px] rounded-full border-radius-50"></div>
-          <h3 className="z-10">about me</h3>
+        <div className="content grid grid-cols-3 grid-rows-5 place-items-center p-[30px]">
+          <div className="absolute bg-white h-[200px] w-[200px] rounded-full border-radius-50 "></div>
+          <h3 className="z-10 p-[20px] mt-[100px] text-2xl text-white">Voice that moves. Code that sings. I craft digital experiences that look as good as they sound — and vice versa.</h3>
         </div>
         <div className="content">
           <h3>about me2</h3>

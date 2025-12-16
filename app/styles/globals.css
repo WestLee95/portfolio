@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&family=Praise&family=Protest+Guerrilla&family=Rubik+Glitch&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Italianno&family=Rammetto+One&family=Racing+Sans+One&family=Monoton&family=Pacifico&family=Praise&family=Protest+Guerrilla&family=Rubik+Glitch&display=swap");
+@import url('./css/panchang.css');
 @import "tailwindcss";
 
 @keyframes fadeInUp {
@@ -19,12 +20,9 @@
   background-repeat: no-repeat;
 }
 
-
-
-
-.hero-title-1 {
-  text-shadow: "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000";
+.hero-title-2 {
   opacity: 0;
+  -webkit-text-stroke: 1px black;
   transform: "translateY(20px)";
   transition: "all 0.8s ease-out";
   font-family: "Times New Roman", Times, serif;
@@ -32,14 +30,19 @@
 
 h1 {
   font-family: "Rubik Glitch", system-ui;
-  -webkit-text-stroke: 1px green;
 }
 h3{
   font-family: "Monument Extended", sans-serif;
 }
-.hero-title-2 {
-  font-family: "Monoton", sans-serif;
-  -webkit-text-stroke: 2px greenyellow;
+h6{
+  font-family: "Italianno", sans-serif;
+  font-size: 5rem;
+
+}
+.hero-title-1 {
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 100;
+  font-style: normal;
   opacity: 0;
   transform: "translateY(20px)";
   transition: "all 0.8s ease-out 0.4s";
@@ -55,18 +58,17 @@ h3{
 
 .numbers {
   font-size: 12px;
-  color: white;
-  border-color: green;
+  color: black;
+  border-color: rgb(158, 158, 5);
 }
 .nav-text {
   font-size: 14px;
-  color: white;
   font-weight: 500;
   text-transform: uppercase;
   font-family: "Times New Roman", Times, serif;
 }
 nav {
-  border-color: greenyellow;
+  border-color: white;
 }
 
 .voice {
@@ -110,43 +112,12 @@ nav {
   font-family: "Monument Extended", sans-serif;
   font-size: 3rem;
 }
-.content:nth-child(1) {
-  background: #95ae03;
-  color: black;
-}
-.content:nth-child(2) {
-  background: #ae4d03;
-  color: white;
-}
-.content:nth-child(3) {
-  background: #95ae03;
-  color: white;
-}
-.content:nth-child(4) {
-  background: #ae4d03;
-  color: white;
-}
-.content:nth-child(5) {
-  background: #95ae03;
-  color: white;
-}
-.content:nth-child(6) {
-  background: #ae4d03;
-  color: white;
-}
-.content:nth-child(7) {
-  background: #ae4d03;
-  color: white;
-}
-
-
-
 
 
 body {
   cursor: url("data:image/svg+xml;utf8,\
   <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
-    <circle cx='16' cy='16' r='14' stroke='aqua' stroke-width='3' fill='none'/>\
+    <circle cx='16' cy='16' r='14' stroke='gold' stroke-width='3' fill='none'/>\
     <circle cx='16' cy='16' r='3' fill='white'/>\
   </svg>") 16 16, auto;
 }

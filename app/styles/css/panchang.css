@@ -1,0 +1,84 @@
+/**
+* @license
+*
+* Font Family: Panchang
+* Designed by: Barbara Bigosinska, Hitesh Malaviya
+* URL: https://wwwfontsharecom/fonts/panchang
+* © 2025 Indian Type Foundry
+*
+* Panchang Extralight 
+* Panchang Light 
+* Panchang Regular 
+* Panchang Medium 
+* Panchang Semibold 
+* Panchang Bold 
+* Panchang Extrabold 
+* Panchang Variable (Variable font)
+
+*
+*/
+@font-face {
+  font-family: 'Panchang-Extralight';
+  src: url('/fonts/Panchang-Extralightwoff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Light';
+  src: url('/fonts/Panchang-Lightwoff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Regular';
+  src: url('/fonts/Panchang-Regularwoff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Medium';
+  src: url('/fonts/Panchang-Mediumwoff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Semibold';
+  src: url('/fonts/Panchang-Semiboldwoff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Bold';
+  src: url('/fonts/Panchang-Boldwoff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Panchang-Extrabold';
+  src: url('/fonts/Panchang-Extraboldwoff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+/**
+* This is a variable font
+* You can control variable axes as shown below:
+* font-variation-settings: wght 8000;
+*
+* available axes:
+'wght' (range from 2000 to 8000
+*/
+@font-face {
+  font-family: 'Panchang-Variable';
+  src: url('/fonts/Panchang-Variablewoff2') format('woff2');
+  font-weight: 200 800;
+  font-display: swap;
+  font-style: normal;
+}
+
