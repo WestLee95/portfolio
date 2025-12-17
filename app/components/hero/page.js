@@ -66,10 +66,10 @@ export default function Hero() {
           width={200}
           height={100}
           style={{
-            width: "400px",
+            width: "200px",
             height: "auto",
           }}
-          className="absolute z-50 hidden lg:block top-[50vh] left-[50vw] xl:top-[44vh] xl:left-[43vw]"
+          className="absolute z-20 hidden lg:block top-[50vh] left-[50vw] xl:top-[44vh] xl:left-[43vw]"
         />
 
         {/* Small Hero Labels */}
