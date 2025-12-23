@@ -7,6 +7,7 @@ import About from "./components/about/page";
 import Projects from "./components/projects/page";
 import Contact from "./components/contact/page";
 import Footer from "./components/footer/page";
+import Snowfall from 'react-snowfall';
 
 export default function Home() {
  
@@ -28,6 +29,7 @@ export default function Home() {
     <div className="relative overflow-x-hidden">
       <div className="bg-[#fef3e2] relative z-0">
         <Navbar />
+        <Snowfall color="#82C309" />
         <Hero />
         <About />
         <Projects />
