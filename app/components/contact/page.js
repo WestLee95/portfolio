@@ -53,36 +53,46 @@ export default function Contact() {
                     </div>
                 </div>
 
-                <div className="max-w-4xl mx-auto px-6 md:px-12 mt-20 grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
-                    <div className="flex items-center justify-center md:justify-start gap-4">
+                <div className=" flex flex-col items-center justify-center gap-12 mt-16">
+               <div className='flex gap-10'>
+                <div className="flex items-center justify-center md:justify-start gap-4">
                         <Mail className="text-[#fef3e2]" size={28} />
-                        <a href="mailto:eugene@example.com" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
-                            eugene@example.com
+                        <a href="mailto:eugenewestley95@gmail.com" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
+                            eugenewestley95@gmail.com
                         </a>
                     </div>
 
                     <div className="flex items-center justify-center md:justify-start gap-4">
                         <Phone className="text-[#fef3e2]" size={28} />
-                        <a href="tel:+254712345678" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
-                            +254 712 345 678
+                        <a href="tel:+254717972081" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
+                            +254 717 972 081
                         </a>
                     </div>
+                </div> 
 
+                        <div className='flex gap-10'>
                     <div className="flex items-center justify-center md:justify-start gap-4">
                         <MessageCircle className="text-[#fef3e2]" size={28} />
-                        <a href="https://wa.me/254712345678" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
+                        <a href="https://wa.me/254717972081" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
                             WhatsApp Me
                         </a>
                     </div>
 
                     <div className="flex items-center justify-center md:justify-start gap-4">
                         <Instagram className="text-[#fef3e2]" size={28} />
-                        <a href="https://instagram.com/eugenewestley" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
-                            @eugenewestley
+                        <a href="https://www.instagram.com/westleymwambacha/" className="text-lg md:text-xl text-[#fef3e2] hover:text-amber-300 transition-colors">
+                            @westleymwambacha
                         </a>
+                    </div>
                     </div>
                 </div>
             </section>
+            <footer className="bg-black py-12">
+        
+        <div className="text-center mt-8 text-amber-700 text-sm">
+          © {new Date().getFullYear()} Eugene Westley. All rights reserved.
+        </div>
+      </footer>
         </>
     );
 }

@@ -45,13 +45,13 @@ export default function Navbar() {
               <span className="numbers flex items-center justify-center w-4  h-4 rounded-full border border-black font-bold">
                 1
               </span>
-              <a href="#about" className="nav-text  hover:text-amber-700 transition-colors">Instagram</a>
+              <a href="https://www.instagram.com/westleymwambacha/" className="nav-text  hover:text-amber-700 transition-colors">Instagram</a>
             </div>
             <div className='flex gap-px items-center justify-center w-[90px]'>
               <span className="numbers font-bold flex items-center justify-center w-4  h-4 rounded-full border border-black">
                 2
               </span>
-              <a href="#projects" className="nav-text  hover:text-amber-700 transition-colors">Linkedin</a>
+              <a href="https://www.linkedin.com/in/westleymwambacha/" className="nav-text  hover:text-amber-700 transition-colors">Linkedin</a>
             </div>
             <div className='flex gap-px items-center'>
               <span className="numbers font-bold flex items-center justify-center w-4  h-4 rounded-full border border-black">
