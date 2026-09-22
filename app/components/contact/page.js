@@ -35,28 +35,28 @@ export default function Contact() {
                 <div className="relative">
                     <div
                         ref={contactCarouselRef}
-                        className="flex gap-12 md:gap-20 items-center whitespace-nowrap text-black"
+                        className="flex gap-12 md:gap-20 items-center whitespace-nowrap text-black chiaroscuro-container"
                         style={{ willChange: 'transform' }}
                     >
                         {[...Array(4)].map((_, repeatIndex) => (
                             <React.Fragment key={repeatIndex}>
                                 <a
                                   href="mailto:eugenewestley95@gmail.com?subject=Website%20Inquiry"
-                                  className="text-5xl font-bold md:text-7xl lg:text-8xl"
+                                  className="text-5xl font-bold md:text-7xl lg:text-8xl chiaroscuro-text"
                                 >
                                   EMAIL
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="tel:+254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold">PHONE
+                                      className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">PHONE
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="https://wa.me/254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold">WHATSAPP
+                                      className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">WHATSAPP
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="https://www.instagram.com/westleymwambacha/"
-                                          className="text-5xl md:text-7xl lg:text-8xl font-bold">INSTAGRAM
+                                          className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">INSTAGRAM
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                             </React.Fragment>
