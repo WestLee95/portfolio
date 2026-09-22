@@ -31,7 +31,7 @@ export default function Contact() {
     return (
         <>
             {/* Contact Section - Auto-scrolling Carousel */}
-            <section id="contact" className="relative bg-[#F7F9FA] py-20 md:py-32 overflow-hidden">
+            <section id="contact" className="relative bg-[#FFF] py-20 md:py-32 overflow-hidden">
                 <div className="relative">
                     <div
                         ref={contactCarouselRef}
@@ -42,21 +42,21 @@ export default function Contact() {
                             <React.Fragment key={repeatIndex}>
                                 <a
                                   href="mailto:eugenewestley95@gmail.com?subject=Website%20Inquiry"
-                                  className="text-5xl font-bold text-[#fef3e2] md:text-7xl lg:text-8xl"
+                                  className="text-5xl font-bold md:text-7xl lg:text-8xl"
                                 >
                                   EMAIL
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="tel:+254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#fef3e2]">PHONE
+                                      className="text-5xl md:text-7xl lg:text-8xl font-bold">PHONE
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="https://wa.me/254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#fef3e2]">WHATSAPP
+                                      className="text-5xl md:text-7xl lg:text-8xl font-bold">WHATSAPP
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                                 <a href="https://www.instagram.com/westleymwambacha/"
-                                          className="text-5xl md:text-7xl lg:text-8xl font-bold text-[#fef3e2]">INSTAGRAM
+                                          className="text-5xl md:text-7xl lg:text-8xl font-bold">INSTAGRAM
                                 </a>
                                 <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
                             </React.Fragment>
