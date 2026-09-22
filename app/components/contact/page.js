@@ -1,75 +1,71 @@
-'use client'
-import React, { useEffect, useRef } from 'react';
-import { Mail, Phone, MessageCircle, Instagram } from 'lucide-react';
+'use client';
 
+import React, { useEffect, useRef } from 'react';
+import { ChiaroscuroLink } from '@/app/components/ChiaroscuroLink';
 
 export default function Contact() {
+  const contactCarouselRef = useRef<HTMLDivElement | null>(null);
 
+  // Contact carousel auto-scroll
+  useEffect(() => {
+    const carousel = contactCarouselRef.current;
+    if (!carousel) return;
 
-    const contactCarouselRef = useRef(null);
+    let scrollAmount = 0;
+    const scroll = () => {
+      scrollAmount += 0.5;
+      carousel.style.transform = `translateX(-${scrollAmount}px)`;
 
-    // Contact carousel auto-scroll
-    useEffect(() => {
-        const carousel = contactCarouselRef.current;
-        if (!carousel) return;
+      if (scrollAmount >= carousel.scrollWidth / 2) {
+        scrollAmount = 0;
+      }
+      requestAnimationFrame(scroll);
+    };
 
-        let scrollAmount = 0;
-        const scroll = () => {
-            scrollAmount += 0.5;
-            carousel.style.transform = `translateX(-${scrollAmount}px)`;
+    const animation = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animation);
+  }, []);
 
-            if (scrollAmount >= carousel.scrollWidth / 2) {
-                scrollAmount = 0;
-            }
-            requestAnimationFrame(scroll);
-        };
+  const contactItems = [
+    { text: 'EMAIL', href: 'mailto:eugenewestley95@gmail.com?subject=Website%20Inquiry' },
+    { text: 'PHONE', href: 'tel:+254717972081' },
+    { text: 'WHATSAPP', href: 'https://wa.me/254717972081' },
+    { text: 'INSTAGRAM', href: 'https://www.instagram.com/westleymwambacha/' },
+  ];
 
-        const animation = requestAnimationFrame(scroll);
-        return () => cancelAnimationFrame(animation);
-    }, []);
+  return (
+    <>
+      
+      <section id="contact" className="relative bg-[#FFF] py-20 md:py-32 overflow-hidden">
+        <div className="relative">
+          <div
+            ref={contactCarouselRef}
+            className="flex gap-12 md:gap-20 items-center whitespace-nowrap text-black"
+            style={{ willChange: 'transform' }}
+          >
+            {[...Array(4)].map((_, repeatIndex) => (
+              <React.Fragment key={repeatIndex}>
+                {contactItems.map((item, itemIndex) => (
+                  <React.Fragment key={`${repeatIndex}-${itemIndex}`}>
+                    <ChiaroscuroLink
+                      text={item.text}
+                      href={item.href}
+                      className="text-5xl md:text-7xl lg:text-8xl font-bold"
+                    />
+                    <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
+                  </React.Fragment>
+                ))}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    return (
-        <>
-            {/* Contact Section - Auto-scrolling Carousel */}
-            <section id="contact" className="relative bg-[#FFF] py-20 md:py-32 overflow-hidden">
-                <div className="relative">
-                    <div
-                        ref={contactCarouselRef}
-                        className="flex gap-12 md:gap-20 items-center whitespace-nowrap text-black chiaroscuro-container"
-                        style={{ willChange: 'transform' }}
-                    >
-                        {[...Array(4)].map((_, repeatIndex) => (
-                            <React.Fragment key={repeatIndex}>
-                                <a
-                                  href="mailto:eugenewestley95@gmail.com?subject=Website%20Inquiry"
-                                  className="text-5xl font-bold md:text-7xl lg:text-8xl chiaroscuro-text"
-                                >
-                                  EMAIL
-                                </a>
-                                <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
-                                <a href="tel:+254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">PHONE
-                                </a>
-                                <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
-                                <a href="https://wa.me/254717972081"
-                                      className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">WHATSAPP
-                                </a>
-                                <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
-                                <a href="https://www.instagram.com/westleymwambacha/"
-                                          className="text-5xl md:text-7xl lg:text-8xl font-bold chiaroscuro-text">INSTAGRAM
-                                </a>
-                                <span className="text-4xl md:text-6xl text-[#3498DB]">•</span>
-                            </React.Fragment>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <footer className="bg-black py-12">
-        
+      <footer className="bg-black py-12">
         <div className="text-center mt-8 text-amber-700 text-sm">
           © {new Date().getFullYear()} Eugene Westley. All rights reserved.
         </div>
       </footer>
-        </>
-    );
+    </>
+  );
 }
