@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { ChiaroscuroLink } from '@/app/components/ChiaroscuroLink';
 
 export default function Contact() {
-  const contactCarouselRef = useRef<HTMLDivElement | null>(null);
+ const contactCarouselRef = useRef<any>(null);
 
   // Contact carousel auto-scroll
   useEffect(() => {
