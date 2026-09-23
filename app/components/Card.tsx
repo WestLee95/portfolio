@@ -4,6 +4,7 @@ interface CardProps {
   title: string;
   date: string;
   clientName: string;
+  description: string;
   bgImageUrl: string;
 }
 
