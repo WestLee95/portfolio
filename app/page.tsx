@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
+import ContactForm from "@/app/components/ContactFormModal";
 
 // Types
 type Mode = "combined" | "dev" | "voice";
@@ -55,6 +56,8 @@ export function CountyTargetingFilter({ selectedCounty, onSelect }: { selectedCo
   );
 }`
 };
+
+
 
 export default function DualThreatPortfolio() {
   // Mode state: 'combined', 'dev', 'voice'
@@ -142,6 +145,7 @@ export default function DualThreatPortfolio() {
     setActiveSandboxTab("audio");
     setIsPlaying(true);
   };
+  
 
   return (
     <div className="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
@@ -759,15 +763,15 @@ export default function DualThreatPortfolio() {
       <footer className="bg-slate-950 border-t border-slate-900 py-12 text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <span className="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">EM</span>
+            <a href="#" className="w-6 h-6 rounded bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">EM</a>
             <span className="text-slate-300 font-semibold">Eugene Westley Mwambacha</span> — Kenya 🇰🇪
           </div>
 
           <div className="flex items-center gap-6 text-slate-400">
-            <a href="#" className="hover:text-white transition-colors" title="GitHub"><i className="fa-brands fa-github text-base"></i></a>
-            <a href="#" className="hover:text-white transition-colors" title="Twitter"><i className="fa-brands fa-x-twitter text-base"></i></a>
-            <a href="#" className="hover:text-white transition-colors" title="LinkedIn"><i className="fa-brands fa-linkedin text-base"></i></a>
-            <a href="#" className="hover:text-white transition-colors" title="Spotify"><i className="fa-brands fa-spotify text-base"></i></a>
+            <a href="https://github.com/WestLee95" className="hover:text-white transition-colors" title="GitHub"><i className="fa-brands fa-github text-base"></i></a>
+            <a href="https://x.com/West_6795" className="hover:text-white transition-colors" title="Twitter"><i className="fa-brands fa-x-twitter text-base"></i></a>
+            <a href="https://www.linkedin.com/in/eugene-westley-28a493248/" className="hover:text-white transition-colors" title="LinkedIn"><i className="fa-brands fa-linkedin text-base"></i></a>
+            <a href="https://www.instagram.com/westleymwambacha/" className="hover:text-white transition-colors" title="Instagram"><i className="fa-brands fa-instagram text-base"></i></a>
           </div>
 
           <p>© {new Date().getFullYear()} Eugene Westley Mwambacha. All rights reserved.</p>
@@ -801,46 +805,7 @@ export default function DualThreatPortfolio() {
                 <p className="text-xs text-slate-400 mt-1">Direct response within 24 hours for engineering or voiceover projects.</p>
               </div>
 
-              <form onSubmit={(e) => { e.preventDefault(); alert("Inquiry sent successfully to Eugene!"); setIsContactOpen(false); }} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-2">Project Type:</label>
-                  <div className="grid grid-cols-2 gap-2 text-xs font-medium">
-                    <button
-                      type="button"
-                      onClick={() => setContactService("dev")}
-                      className={`p-2.5 rounded-xl border text-center transition-all ${contactService === "dev" ? "border-emerald-500 bg-emerald-500/10 text-emerald-400" : "border-slate-800 bg-slate-950 text-slate-400"}`}
-                    >
-                      Frontend App Dev
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setContactService("voice")}
-                      className={`p-2.5 rounded-xl border text-center transition-all ${contactService === "voice" ? "border-violet-500 bg-violet-500/10 text-violet-400" : "border-slate-800 bg-slate-950 text-slate-400"}`}
-                    >
-                      Voice-Over / Podcast
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
-                  <input type="text" required placeholder="Jane Doe" className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-emerald-500" />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-                  <input type="email" required placeholder="jane@company.com" className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-emerald-500" />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Project Details</label>
-                  <textarea rows={3} required placeholder="Describe your web application scope or voice audition request..." className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-xs focus:outline-none focus:border-emerald-500 resize-none"></textarea>
-                </div>
-
-                <button type="submit" className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-violet-600 text-slate-950 font-extrabold text-xs shadow-lg hover:opacity-95 transition-opacity">
-                  Send Direct Inquiry
-                </button>
-              </form>
+              <ContactForm setIsContactOpen={(val) => setIsContactOpen(val)} />
             </motion.div>
           </motion.div>
         )}
