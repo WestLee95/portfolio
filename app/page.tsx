@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import ContactForm from "@/app/components/ContactFormModal";
-
+import Image from "next/image";
 // Types
 type Mode = "combined" | "dev" | "voice";
 type CodeFile = "P2PEngine.tsx" | "LawFirmVault.tsx" | "OnionCatalog.tsx";
@@ -157,9 +157,7 @@ export default function DualThreatPortfolio() {
           {/*} Brand & Location */}
           <div className="flex items-center gap-3">
             <a href="#" className="font-extrabold text-lg sm:text-xl text-white tracking-tight flex items-center gap-2.5">
-              <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 via-cyan-500 to-violet-600 flex items-center justify-center text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/10">
-                EM
-              </span>
+              <Image src="/logo_mark.svg" alt="Eugene Mwambacha Logo" width={32} height={32} className="rounded-full" />
               <span className="hidden sm:inline">EUGENE MWAMBACHA</span>
             </a>
 
