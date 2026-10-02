@@ -1,22 +1,9 @@
 @import "tailwindcss";
 
-
-
-
-
-body {
-  cursor: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
-    <circle cx='16' cy='16' r='14' stroke='gold' stroke-width='3' fill='none'/>\
-    <circle cx='16' cy='16' r='3' fill='white'/>\
-  </svg>") 16 16, auto;
-}
-a, a:hover, a:active, a:focus{
-  cursor: url("data:image/svg+xml;utf8,\
-  <svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'>\
-    <circle cx='16' cy='16' r='14' stroke='aqua' stroke-width='3' fill='none'/>\
-    <circle cx='16' cy='16' r='3' fill='white'/>\
-  </svg>") 16 16, auto;
+@media (pointer: fine) {
+  body, button, a, input, textarea {
+    cursor: none !important;
+  }
 }
 
 
