@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, MotionConfig } from 'framer-motion';
+import { motion, useInView, AnimatePresence, useMotionValue, useSpring, useTransform, MotionConfig, useReducedMotion } from 'framer-motion';
 import { 
   Code2, 
   Mic, 
@@ -14,20 +14,22 @@ import {
   Linkedin, 
   Twitter, 
   Instagram, 
+  MessageCircle,
   Phone, 
   Mail,
   MapPin, 
-  X, 
   ArrowUpRight, 
   ChevronRight, 
-  Send, 
   Radio, 
   FileText,
   Zap,
   Terminal,
   Activity,
-  Maximize2
+  Maximize2,
+  X
 } from 'lucide-react';
+import ContactModal from '@/app/components/ContactModal';
+
 
 interface Pillar {
   id: string;
@@ -71,20 +73,23 @@ interface AudioReel {
   waveform: number[];
 }
 
+
+
 const PORTFOLIO_DATA = {
   name: "Eugene Westley Mwambacha",
   shortName: "EUGENE MWAMBACHA",
   location: "Kitengela, Kenya",
   availability: "AVAILABLE FOR Q4 PROJECTS",
   
+  
   socials: {
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
-    twitter: "https://x.com",
-    instagram: "https://instagram.com",
-    email: "eugenemwambacha@gmail.com",
-    whatsapp: "https://wa.me/254700000000",
-    phone: "+254 700 000 000"
+    github: "https://github.com/westlee95",
+    linkedin: "https://www.linkedin.com/in/eugene-westley-28a493248/",
+    twitter: "https://x.com/West_6795",
+    instagram: "https://www.instagram.com/westleymwambacha/",
+    email: "eugenewestley95@gmail.com",
+    whatsapp: "https://wa.me/254712972081",
+    phone: "+254 717 972 081"
   },
 
   pillars: [
@@ -223,11 +228,59 @@ const PORTFOLIO_DATA = {
 
   experienceStats: [
     { label: "Core Pillars Integrated", value: "3", suffix: "" },
-    { label: "Frontend & Web Builds", value: "15", suffix: "+" },
-    { label: "VO & Audio Clips Produced", value: "40", suffix: "+" },
-    { label: "Campaign Impressions Generated", value: "250", suffix: "K+" }
+    { label: "Frontend & Web Builds", value: "14", suffix: "+" },
+    { label: "VO & Audio Clips Produced", value: "11", suffix: "+" },
+    { label: "Campaign Impressions Generated", value: "227", suffix: "K+" }
   ]
 };
+
+const SOCIAL_ITEMS = [
+  {
+    id: 'github',
+    href: PORTFOLIO_DATA.socials.github,
+    label: 'GitHub Profile',
+    icon: <Github className="w-5 h-5" />,
+    brandColor: 'rgba(255, 255, 255, 0.4)', // White glow
+    hoverTextColor: 'hover:text-white',
+    hoverBorderColor: 'hover:border-white/50'
+  },
+  {
+    id: 'linkedin',
+    href: PORTFOLIO_DATA.socials.linkedin,
+    label: 'LinkedIn Profile',
+    icon: <Linkedin className="w-5 h-5" />,
+    brandColor: 'rgba(0, 119, 181, 0.6)', // Azure Blue glow
+    hoverTextColor: 'hover:text-[#0077B5]',
+    hoverBorderColor: 'hover:border-[#0077B5]/50'
+  },
+  {
+    id: 'twitter',
+    href: PORTFOLIO_DATA.socials.twitter,
+    label: 'Twitter Profile',
+    icon: <Twitter className="w-5 h-5" />,
+    brandColor: 'rgba(255, 255, 255, 0.4)', // White glow (X/Twitter)
+    hoverTextColor: 'hover:text-white',
+    hoverBorderColor: 'hover:border-white/50'
+  },
+  {
+    id: 'instagram',
+    href: PORTFOLIO_DATA.socials.instagram,
+    label: 'Instagram Profile',
+    icon: <Instagram className="w-5 h-5" />,
+    brandColor: 'rgba(245, 96, 64, 0.6)', // Orange/Pink gradient glow
+    hoverTextColor: 'hover:text-[#F56040]',
+    hoverBorderColor: 'hover:border-[#F56040]/50'
+  },
+  {
+    id: 'whatsapp',
+    href: PORTFOLIO_DATA.socials.whatsapp,
+    label: 'WhatsApp Chat',
+    icon: <MessageCircle className="w-5 h-5" />,
+    brandColor: 'rgba(37, 211, 102, 0.6)', // Lush Green glow
+    hoverTextColor: 'hover:text-[#25D366]',
+    hoverBorderColor: 'hover:border-[#25D366]/50'
+  }
+];
 
 const TopographicBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 opacity-20 overflow-hidden">
@@ -296,7 +349,6 @@ const SpringCard: React.FC<SpringCardProps> = ({
     x.set(xPct);
     y.set(yPct);
 
-    // Update CSS custom properties for radial gradient mouse tracking
     e.currentTarget.style.setProperty('--mouse-x', `${mouseX}px`);
     e.currentTarget.style.setProperty('--mouse-y', `${mouseY}px`);
   };
@@ -340,61 +392,10 @@ const SpringCard: React.FC<SpringCardProps> = ({
   );
 };
 
-interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  ariaLabel: string;
-}
-
-const SharedModal: React.FC<ModalProps> = ({ isOpen, onClose, children, ariaLabel }) => {
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
-          onClick={onClose}
-        >
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-label={ariaLabel}
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 overflow-hidden shadow-2xl"
-          >
-            <button
-              onClick={onClose}
-              aria-label="Close modal"
-              className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#FF2A85]"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            {children}
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
-};
-
 export default function App() {
+  const containerRef = React.useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: '-50px' });
+  const shouldReduceMotion = useReducedMotion();
   const [activePillar, setActivePillar] = useState<string>('dev');
   const [activeProjectTab, setActiveProjectTab] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -402,12 +403,6 @@ export default function App() {
   const [playingAudioId, setPlayingAudioId] = useState<string | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [audioProgress, setAudioProgress] = useState<number>(0);
-
-  // Controlled contact form state
-  const [contactName, setContactName] = useState<string>('');
-  const [contactEmail, setContactEmail] = useState<string>('');
-  const [contactRequirement, setContactRequirement] = useState<string>('Web Development (Next.js / React / Responsive Systems)');
-  const [contactMessage, setContactMessage] = useState<string>('');
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -419,7 +414,6 @@ export default function App() {
     setActiveProjectTab(pillarId);
   };
 
-  // Audio Playback timer effect matching each reel's real duration
   useEffect(() => {
     if (playingAudioId) {
       const activeReel = PORTFOLIO_DATA.audioReels.find(r => r.id === playingAudioId);
@@ -471,20 +465,11 @@ export default function App() {
     }
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const mailtoSubject = encodeURIComponent(`New Inquiry from ${contactName} - ${contactRequirement}`);
-    const mailtoBody = encodeURIComponent(`Name: ${contactName}\nEmail: ${contactEmail}\nRequirement: ${contactRequirement}\n\nMessage:\n${contactMessage}`);
-    window.location.href = `mailto:${PORTFOLIO_DATA.socials.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    setIsContactOpen(false);
-  };
-
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen bg-[#0B0A10] text-slate-100 font-sans selection:bg-[#FF2A85] selection:text-white relative overflow-x-hidden scroll-smooth">
         <TopographicBackground />
 
-        {/* Global Injected CSS styles for keyframes & anchor scrolling */}
         <style dangerouslySetInnerHTML={{ __html: `
           html {
             scroll-behavior: smooth;
@@ -552,7 +537,6 @@ export default function App() {
 
           <div className="flex flex-col items-center text-center relative z-10">
             
-            {/* Interactive Pillar Selector Tabs */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-xl mb-8 shadow-2xl" role="tablist" aria-label="Skill Pillars">
               {PORTFOLIO_DATA.pillars.map((pillar) => {
                 const Icon = pillar.icon;
@@ -584,7 +568,6 @@ export default function App() {
               })}
             </div>
 
-            {/* Dynamic Badge */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentPillar.id + "-badge"}
@@ -603,7 +586,6 @@ export default function App() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Dynamic Hero Headline */}
             <AnimatePresence mode="wait">
               <motion.h1 
                 key={currentPillar.id + "-headline"}
@@ -624,7 +606,6 @@ export default function App() {
               </motion.h1>
             </AnimatePresence>
 
-            {/* Dynamic Subtext */}
             <AnimatePresence mode="wait">
               <motion.p 
                 key={currentPillar.id + "-subtext"}
@@ -638,7 +619,6 @@ export default function App() {
               </motion.p>
             </AnimatePresence>
 
-            {/* Dynamic Hero CTAs */}
             <AnimatePresence mode="wait">
               <motion.div 
                 key={currentPillar.id + "-ctas"}
@@ -666,7 +646,6 @@ export default function App() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Experience Statistics */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -911,7 +890,6 @@ export default function App() {
                         </div>
                       </div>
 
-                      {/* Waveform fills left to right as reel plays */}
                       <div className="flex items-center gap-1 h-8 px-4 py-1 rounded-lg bg-slate-900 border border-slate-800/80 w-full sm:w-auto overflow-hidden">
                         {reel.waveform.map((baseHeight, wIdx) => {
                           const barProgressThreshold = (wIdx / reel.waveform.length) * 100;
@@ -988,9 +966,10 @@ export default function App() {
                 <div className="space-y-3">
                   {[
                     { label: "Frontend & Web", val: "Next.js, React, Tailwind CSS, Framer Motion, GSAP" },
-                    { label: "Audio & VO", val: "Adobe Audition, CapCut, Studio Acoustic Setup" },
+                    { label: "Audio & VO", val: "Audacity, CapCut, Studio Acoustic Setup" },
                     { label: "Growth Media", val: "TikTok, Instagram Reels, Notion Content Calendars" },
-                    { label: "Design Systems", val: "Emil Kowalski Physics, Figma, Motion Primitives" }
+                    { label: "Design Systems", val: "Modern UI/UX, Figma, Motion Primitives" },
+                    { label: "Backend & DB", val: "Node.js, Docker, Supabase, PostgreSQL, REST APIs" }
                   ].map((item) => (
                     <div key={item.label} className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80">
                       <span className="text-[10px] font-mono text-[#00D2FF] block uppercase">{item.label}</span>
@@ -1005,148 +984,131 @@ export default function App() {
         </section>
 
         {/* Footer */}
-        <footer className="relative z-10 pt-16 pb-12 border-t border-slate-800/60 bg-slate-950/80">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h3 className="text-lg font-extrabold tracking-wider text-white">{PORTFOLIO_DATA.name}</h3>
-              <p className="text-xs text-slate-400 mt-1 flex items-center gap-3">
-                <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-[#FF2A85]" /> {PORTFOLIO_DATA.location}</span>
-                <span className="flex items-center gap-1"><Phone className="w-3 h-3 text-[#00F5A0]" /> {PORTFOLIO_DATA.socials.phone}</span>
-                <span className="flex items-center gap-1"><Mail className="w-3 h-3 text-[#FF9F1C]" /> {PORTFOLIO_DATA.socials.email}</span>
-              </p>
-            </div>
+        <footer ref={containerRef} className="relative z-10 pt-16 pb-12 border-t border-slate-800/60 bg-slate-950/80">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <h3 className="text-lg font-extrabold tracking-wider text-white">{PORTFOLIO_DATA.name}</h3>
+          <p className="text-xs text-slate-400 mt-1 flex items-center gap-3">
+            <span className="flex items-center gap-1">
+              <MapPin className="w-3 h-3 text-[#FF2A85]" /> {PORTFOLIO_DATA.location}
+            </span>
+            <span className="flex items-center gap-1">
+              <Phone className="w-3 h-3 text-[#00F5A0]" /> {PORTFOLIO_DATA.socials.phone}
+            </span>
+            <span className="flex items-center gap-1">
+              <Mail className="w-3 h-3 text-[#FF9F1C]" /> {PORTFOLIO_DATA.socials.email}
+            </span>
+          </p>
+        </div>
 
-            <div className="flex items-center gap-4 text-slate-400">
-              <a href={PORTFOLIO_DATA.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub Profile" className="hover:text-[#00F5A0] transition-colors p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <Github className="w-4 h-4" />
-              </a>
-              <a href={PORTFOLIO_DATA.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn Profile" className="hover:text-[#00D2FF] transition-colors p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <Linkedin className="w-4 h-4" />
-              </a>
-              <a href={PORTFOLIO_DATA.socials.twitter} target="_blank" rel="noreferrer" aria-label="Twitter Profile" className="hover:text-[#FF2A85] transition-colors p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a href={PORTFOLIO_DATA.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram Profile" className="hover:text-[#FF9F1C] transition-colors p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href={PORTFOLIO_DATA.socials.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp Chat" className="hover:text-emerald-400 transition-colors p-2 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs">
-                WA
-              </a>
-            </div>
+        {/* --- Social Icons Micro-Interaction Container --- */}
+        <div className="w-full md:w-[500px] flex items-center justify-center">
+          <div className="relative flex items-center gap-3 md:gap-2 text-slate-400">
+            {SOCIAL_ITEMS.map((item, index) => (
+              <a
+      key={item.id}
+      href={item.href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={item.label}
+      style={{
+        zIndex: SOCIAL_ITEMS.length - index,
+        // Desktop overlapping to spread-out transition
+        transform: `translateX(${isInView ? '0px' : `-${index * 18}px`})`,
+        '--hover-glow-color': item.brandColor
+      } as React.CSSProperties}
+      className={`
+        p-2 rounded-xl bg-slate-900 border border-slate-800 transition-all duration-500 ease-out
+        hover:-translate-y-1 hover:scale-110 hover:z-50
+        [box-shadow:none] hover:[box-shadow:0_0_24px_4px_var(--hover-glow-color)]
+        ${item.hoverTextColor} ${item.hoverBorderColor}
+      `}
+    >
+      {item.icon}
+    </a>
+            ))}
           </div>
+        </div>
+      </div>
 
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
-            <span>© {new Date().getFullYear()} {PORTFOLIO_DATA.name.toUpperCase()}. ALL RIGHTS RESERVED.</span>
-            <span>MADAGASCAR SUNSET MOTH PALETTE • EMIL KOWALSKI DESIGN MANIFESTO</span>
-          </div>
-        </footer>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-8 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 font-mono">
+        <span>© {new Date().getFullYear()} {PORTFOLIO_DATA.name.toUpperCase()}. ALL RIGHTS RESERVED.</span>
+      </div>
+    </footer>
+  
+
 
         {/* Case Study Detail Modal */}
-        <SharedModal 
-          isOpen={selectedProject !== null} 
-          onClose={() => setSelectedProject(null)}
-          ariaLabel="Case study details"
-        >
-          {selectedProject && (
-            <div>
-              <span className="text-[10px] font-mono tracking-widest text-[#00F5A0] uppercase block mb-1">
-                // CASE STUDY DETAIL
-              </span>
-              <h3 className="text-2xl font-extrabold text-white mb-2">{selectedProject.title}</h3>
-              <p className="text-xs text-slate-400 mb-6 leading-relaxed">{selectedProject.details}</p>
-
-              <div className="mb-6">
-                <span className="text-xs font-mono text-slate-300 block mb-2 font-bold">TECHNOLOGY & TOOLS</span>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((t) => (
-                    <span key={t} className="text-xs font-mono px-3 py-1 rounded-lg bg-slate-950 text-emerald-400 border border-slate-800">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="w-full py-3 rounded-xl bg-gradient-to-r from-[#00F5A0] to-[#00D2FF] text-slate-950 font-bold text-xs uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-white"
+        <AnimatePresence>
+          {selectedProject !== null && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+              <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-label="Case study details"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 overflow-hidden shadow-2xl"
               >
-                Close Case Study
-              </button>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  aria-label="Close modal"
+                  className="absolute top-4 right-4 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <span className="text-[10px] font-mono tracking-widest text-[#00F5A0] uppercase block mb-1">
+                  // CASE STUDY DETAIL
+                </span>
+                <h3 className="text-2xl font-extrabold text-white mb-2">{selectedProject.title}</h3>
+                <p className="text-xs text-slate-400 mb-6 leading-relaxed">{selectedProject.details}</p>
+
+                <div className="mb-6">
+                  <span className="text-xs font-mono text-slate-300 block mb-2 font-bold">TECHNOLOGY & TOOLS</span>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tech.map((t) => (
+                      <span key={t} className="text-xs font-mono px-3 py-1 rounded-lg bg-slate-950 text-emerald-400 border border-slate-800">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[#00F5A0] to-[#00D2FF] text-slate-950 font-bold text-xs uppercase tracking-wider"
+                >
+                  Close Case Study
+                </button>
+              </motion.div>
             </div>
           )}
-        </SharedModal>
+        </AnimatePresence>
 
-        {/* Contact Discovery Drawer Modal */}
-        <SharedModal 
-          isOpen={isContactOpen} 
-          onClose={() => setIsContactOpen(false)}
-          ariaLabel="Contact and discovery call inquiry form"
-        >
-          <div>
-            <span className="text-[10px] font-mono tracking-widest text-[#FF2A85] uppercase block mb-1">
-              // DISCOVERY CALL & INQUIRY
-            </span>
-            <h3 className="text-2xl font-extrabold text-white mb-6">Let's Build Something Impactful.</h3>
-
-            <form onSubmit={handleContactSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="visitor-name" className="text-xs font-mono text-slate-300 block mb-1">YOUR NAME</label>
-                <input 
-                  id="visitor-name"
-                  type="text" 
-                  required 
-                  value={contactName}
-                  onChange={(e) => setContactName(e.target.value)}
-                  placeholder="Jane Doe" 
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-[#FF2A85]" 
-                />
-              </div>
-              <div>
-                <label htmlFor="visitor-email" className="text-xs font-mono text-slate-300 block mb-1">EMAIL ADDRESS</label>
-                <input 
-                  id="visitor-email"
-                  type="email" 
-                  required 
-                  value={contactEmail}
-                  onChange={(e) => setContactEmail(e.target.value)}
-                  placeholder="jane@example.com" 
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-[#FF2A85]" 
-                />
-              </div>
-              <div>
-                <label htmlFor="visitor-requirement" className="text-xs font-mono text-slate-300 block mb-1">PRIMARY REQUIREMENT</label>
-                <select 
-                  id="visitor-requirement"
-                  value={contactRequirement}
-                  onChange={(e) => setContactRequirement(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-[#FF2A85]"
+        {/* Contact Modal Overlay */}
+        <AnimatePresence>
+          {isContactOpen && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                className="relative w-full max-w-md"
+              >
+                <button
+                  onClick={() => setIsContactOpen(false)}
+                  aria-label="Close modal"
+                  className="absolute top-4 right-4 z-10 p-2 rounded-full bg-slate-800 text-slate-400 hover:text-white transition-colors"
                 >
-                  <option>Web Development (Next.js / React / Responsive Systems)</option>
-                  <option>Voice Over Narration & Studio Audio</option>
-                  <option>Social Media Management & Growth Campaigns</option>
-                  <option>Full Multi-Disciplinary Collaboration</option>
-                </select>
-              </div>
-              <div>
-                <label htmlFor="visitor-message" className="text-xs font-mono text-slate-300 block mb-1">MESSAGE</label>
-                <textarea 
-                  id="visitor-message"
-                  rows={3} 
-                  required 
-                  value={contactMessage}
-                  onChange={(e) => setContactMessage(e.target.value)}
-                  placeholder="Tell me about your project goals and timeline..." 
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-[#FF2A85]"
-                />
-              </div>
-
-              <button type="submit" className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#FF2A85] via-[#FF9F1C] to-[#00F5A0] text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-[#FF2A85]/20 focus:outline-none focus:ring-2 focus:ring-white">
-                <Send className="w-4 h-4" />
-                <span>Send Inquiry & Open Mail</span>
-              </button>
-            </form>
-          </div>
-        </SharedModal>
+                  <X className="w-5 h-5" />
+                </button>
+                <ContactModal setIsContactOpen={setIsContactOpen} />
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
     </MotionConfig>
